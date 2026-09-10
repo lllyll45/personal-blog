@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Мой блог</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 30px auto; padding: 0 20px; }
+        .article { border-bottom: 1px solid #ddd; padding: 15px 0; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .admin-link { float: right; }
+    </style>
+</head>
+<body>
+<h1>Мой личный блог
+    <a th:href="@{/admin/dashboard}" class="admin-link">Админка</a>
+</h1>
+
+<div th:if="${#lists.isEmpty(articles)}">
+    <p>Пока нет статей.</p>
+</div>
+
+<div th:each="article : ${articles}" class="article">
+    <h2>
+        <a th:href="@{/article/{filename}(filename=${article.filename})}"
+           th:text="${article.title}">Заголовок</a>
+    </h2>
+    <p th:text="${#temporals.format(article.createdAt, 'dd.MM.yyyy HH:mm')}">дата</p>
+</div>
+</body>
+</html>
