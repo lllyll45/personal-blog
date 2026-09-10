@@ -2,6 +2,7 @@
 
 A simple personal blog application where you can write, publish, edit and delete articles.  
 The blog has a public guest section and a protected admin section.
+URL: https://roadmap.sh/projects/personal-blog
 
 ## Features
 
